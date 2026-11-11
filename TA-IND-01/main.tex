@@ -1,0 +1,207 @@
+\documentclass[10pt,a4paper]{article}
+
+% Compilación: pdfLaTeX, BibTeX, pdfLaTeX, pdfLaTeX
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{geometry}
+\geometry{margin=2.1cm}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{3pt}
+\renewcommand{\arraystretch}{1.18}
+\setlist{nosep,leftmargin=*}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Ingeniería de Requerimientos (ISR-401)}
+\rhead{\small TA-IND-01}
+\cfoot{\thepage}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+\newcommand{\captura}[2]{%
+	\begin{figure}[H]
+		\centering
+		\IfFileExists{Evidencias/#1}{%
+			\includegraphics[height=14cm,keepaspectratio]{Evidencias/#1}
+		}{%
+			\fbox{\parbox[c][3.3cm][c]{0.78\linewidth}{\centering
+					\textbf{Pendiente: insertar captura propia}\\[3pt]
+					Archivo esperado: \texttt{Evidencias/#1}}}
+		}
+		\caption{#2}
+	\end{figure}
+}
+\begin{document}
+	
+	\pagenumbering{roman}
+	\begin{titlepage}
+		\thispagestyle{empty}
+		\centering
+		{\large\textbf{UNIVERSIDAD TÉCNICA ESTATAL DE QUEVEDO}}\\[0.3cm]
+		{\normalsize Facultad de Ciencias de la Ingeniería}\\[0.15cm]
+		{\normalsize Carrera de Ingeniería de Software}
+		\vspace{1.5cm}
+		{\color{blue}\rule{0.85\textwidth}{1.5pt}}
+		\vspace{1.2cm}
+		{\large\textcolor{blue}{\textbf{ACTIVIDAD ACADÉMICA}}}\\[0.5cm]
+		{\Large\textbf{TA-IND-01}}\\[0.8cm]
+		{\LARGE\bfseries Clasificación y análisis\\[0.2cm] de requisitos}
+		\vspace{0.5cm}
+		{\large Aplicación móvil Eneba para Android}
+		\vspace{1.2cm}
+		{\color{blue}\rule{0.85\textwidth}{1.5pt}}
+		\vspace{0.8cm}
+		\begin{minipage}{0.78\textwidth}
+			\renewcommand{\arraystretch}{1.8}
+			\begin{tabular}{@{}>{\bfseries}p{3.5cm}p{8cm}@{}}
+				Asignatura: & Ingeniería de Requerimientos \\
+				Código: & ISR-401 \\
+				Estudiante: & Joseph Orlando Saltos Tello \\
+				Curso: & Cuarto semestre de Software A \\
+				Docente: & Gleiston Cicerón Guerrero Ulloa, PhD \\
+				Fecha de entrega: & 11/11/2026
+			\end{tabular}
+		\end{minipage}
+		\vfill
+		{\color{blue}\rule{0.85\textwidth}{0.8pt}}\\[0.4cm]
+		{\normalsize\textbf{QUEVEDO -- LOS RÍOS -- ECUADOR}}\\[0.15cm]
+		{\normalsize 2026}
+	\end{titlepage}
+	\pagenumbering{arabic}
+	
+	\section{Descripción del sistema seleccionado}
+	
+	El sistema analizado es la aplicación móvil de Eneba para Android, una plataforma de comercio electrónico de productos digitales para videojuegos. El análisis se limita a las funciones observadas directamente en la aplicación: consulta del catálogo, búsqueda de productos, ficha de oferta, cuenta de usuario y carrito de compras. Los usuarios considerados son compradores que utilizan un teléfono Android con conexión a Internet.
+	
+	\noindent Versión de Eneba: v1.90.40. 
+	\newline
+	Versión de Android: Android 15. 
+	\newline
+	Dispositivo: Samsung A36. 
+	\newline
+	Fecha de las capturas: 11/11/2026.
+	
+	\captura{PantallaPricipalEneba.jpeg}{Pantalla principal o catálogo de la aplicación Eneba en Android.}
+	\captura{PantallaBusquedaEneba.jpeg}{Pantalla de búsqueda de productos en la aplicación Eneba.}
+	\captura{PantallaCarritoEneba.jpeg}{Pantalla del carrito de compras de la aplicación Eneba.}
+	
+	\section{Resumen analítico de ISO/IEC/IEEE 29148:2018}
+	
+	\subsection{Requisito bien formado}
+	
+	Según la cláusula 5.2.4 de la norma \cite{iso29148}, un requisito bien formado expresa una necesidad que el sistema debe satisfacer para resolver un problema, alcanzar un objetivo o atender a una parte interesada. Debe describir una capacidad concreta, respetar las restricciones aplicables, incluir condiciones medibles cuando corresponda y poder verificarse. Una frase como ``la aplicación debe ser rápida'' solo expresa una intención; en cambio, un enunciado con una operación y una condición medible puede convertirse en un caso de prueba. Los valores numéricos de este trabajo son metas de aceptación académicas, no mediciones reales de Eneba.
+	
+	\subsection{Características de un requisito individual}
+	
+	La cláusula 5.2.5 \cite{iso29148} define nueve características: necesario, apropiado, no ambiguo, completo, singular, factible, verificable, correcto y conforme. Un requisito es necesario si responde a una necesidad real, no ambiguo si admite una sola interpretación, singular si contiene una sola obligación y verificable si existe una forma objetiva de comprobarlo. Por ello, no conviene mezclar búsqueda, inicio de sesión y pago en una misma frase: es mejor separarlos en requisitos con identificador propio.
+	
+	\subsection{Características de un conjunto de requisitos}
+	
+	La cláusula 5.2.6 \cite{iso29148} evalúa el conjunto y no solo cada enunciado: debe ser completo, consistente, no redundante, factible, comprensible, verificable y trazable. Esta revisión permite detectar repeticiones, contradicciones y necesidades sin cubrir. En este trabajo, la trazabilidad se mantiene relacionando cada requisito con una pantalla observada y su criterio de aceptación.
+	
+	\subsection{Términos ambiguos}
+	
+	La cláusula 5.2.7 \cite{iso29148} recomienda un lenguaje claro y uniforme, y evitar términos como ``rápido'', ``fácil'', ``adecuado'', ``suficiente'', ``normalmente'', ``cuando sea posible'' o ``intuitivo'', porque cada persona los interpreta distinto. Deben sustituirse por métricas, límites o condiciones observables; por ejemplo, un tiempo máximo de respuesta bajo un escenario de prueba definido.
+	
+	\section{Glosario de términos}
+	
+	\begin{longtable}{p{0.18\linewidth}p{0.42\linewidth}p{0.34\linewidth}}
+		\toprule
+		\textbf{Término} & \textbf{Definición} & \textbf{Ejemplo en Eneba}\\
+		\midrule
+		\endhead
+		Requisito & Enunciado que expresa una necesidad y las condiciones o restricciones asociadas. & La aplicación presenta los resultados de una búsqueda.\\
+		Parte interesada & Persona u organización que puede afectar, verse afectada o tener interés en el sistema. & Un comprador de productos digitales.\\
+		Necesidad & Carencia o propósito que motiva una capacidad del sistema. & Localizar un videojuego por su nombre.\\
+		Restricción & Límite que condiciona las soluciones o el funcionamiento. & La aplicación se usa en un dispositivo Android compatible.\\
+		Condición & Circunstancia que debe cumplirse para que un requisito sea aplicable. & El tiempo de búsqueda se mide con conexión estable.\\
+		Suposición & Afirmación aceptada provisionalmente como cierta para el análisis. & El usuario tiene Internet durante la prueba.\\
+		Verificación & Comprobación de que un producto o requisito satisface lo especificado. & Ejecutar una búsqueda y comparar con el criterio definido.\\
+		Validación & Confirmación de que los requisitos representan las necesidades de las partes interesadas. & Preguntar al usuario si la ficha le permite identificar la oferta.\\
+		Trazabilidad & Capacidad de relacionar un requisito con su origen y con lo que lo implementa o verifica. & Relacionar REQ-F-01 con la captura de búsqueda y su prueba.\\
+		Sistema & Conjunto de elementos que interactúan para cumplir un propósito. & La aplicación Eneba y los servicios que necesita.\\
+		\bottomrule
+	\end{longtable}
+	
+	\section{Requisitos y clasificación}
+	
+	Los requisitos cubren cinco tipos: funcional, interfaz externa, desempeño, calidad y restricción. Los cinco de calidad se clasifican con ISO/IEC 25010:2023 \cite{iso25010} y llevan métrica y umbral.
+	
+	\small
+	\begin{longtable}{p{0.09\linewidth}p{0.48\linewidth}p{0.16\linewidth}p{0.21\linewidth}}
+		\toprule
+		\textbf{ID} & \textbf{Enunciado del requisito} & \textbf{Tipo} & \textbf{Criterio de aceptación}\\
+		\midrule
+		\endhead
+		REQ-F-01 & La aplicación deberá permitir al usuario introducir el nombre de un producto digital en el campo de búsqueda. & Funcional & El campo acepta texto y permite iniciar la búsqueda.\\
+		REQ-F-02 & La aplicación deberá mostrar una lista de resultados relacionada con el texto enviado en la búsqueda. & Funcional & Se presenta una lista o un estado explícito sin resultados.\\
+		REQ-F-03 & La aplicación deberá permitir abrir la ficha de un producto seleccionado desde el catálogo o los resultados. & Funcional & Al seleccionar un producto se muestra su ficha.\\
+		REQ-F-04 & La aplicación deberá presentar el precio y la información principal de la oferta seleccionada. & Funcional & La ficha muestra los datos de la oferta sin campos esenciales vacíos.\\
+		REQ-F-05 & La aplicación deberá permitir acceder a la sección de cuenta mediante la opción de perfil disponible. & Funcional & La sección de cuenta se abre al seleccionar la opción.\\
+		REQ-I-01 & La aplicación deberá presentar sus controles principales dentro del área visible de la pantalla, sin que queden ocultos por elementos del sistema. & Interfaz externa & Los controles evaluados pueden visualizarse y accionarse.\\
+		REQ-I-02 & La aplicación deberá adaptar la presentación de sus pantallas al tamaño lógico del dispositivo Android utilizado. & Interfaz externa & No hay superposición ni recorte de los controles evaluados.\\
+		REQ-P-01 & La aplicación deberá mostrar los resultados de búsqueda en un máximo de 3 segundos, en 19 de 20 ejecuciones bajo las mismas condiciones de red. & Desempeño & Al menos 19 de 20 mediciones cumplen 3 s.\\
+		REQ-P-02 & La aplicación deberá abrir la ficha de un producto en un máximo de 3 segundos, en 19 de 20 ejecuciones bajo las condiciones de prueba definidas. & Desempeño & Al menos 19 de 20 mediciones cumplen 3 s.\\
+		REQ-Q-01 & La función de búsqueda deberá estar disponible en al menos el 99\% de las comprobaciones de una prueba continua de 24 horas, excluyendo fallos externos de red documentados. & Calidad: fiabilidad / disponibilidad & Disponibilidad medida $\geq$ 99\%.\\
+		REQ-Q-02 & La aplicación deberá conservar la integridad de los datos de una operación de compra durante la navegación entre las pantallas del proceso. & Calidad: seguridad / integridad & 100\% de los casos de prueba sin modificación no autorizada de datos.\\
+		REQ-Q-03 & La aplicación deberá permitir completar una búsqueda mediante controles identificables en al menos 9 de 10 intentos de usuarios de prueba. & Calidad: capacidad de interacción / operabilidad & Al menos 9 de 10 participantes completan la búsqueda sin ayuda.\\
+		REQ-Q-04 & La aplicación deberá mostrar el mismo precio de una oferta en la ficha del producto y en el resumen de compra, en el 100\% de los casos de prueba válidos. & Calidad: adecuación funcional / corrección funcional & Sin diferencias de precio en los casos de prueba.\\
+		REQ-Q-05 & La aplicación deberá utilizar únicamente los permisos Android necesarios para las funciones que el usuario active. & Calidad: seguridad / confidencialidad & El inventario de permisos no contiene permisos sin justificación funcional.\\
+		REQ-C-01 & La aplicación deberá operar en la versión de Android del dispositivo de prueba, siempre que esté dentro de las versiones oficialmente compatibles. & Restricción & La instalación y las funciones evaluadas se ejecutan en la versión declarada.\\
+		\bottomrule
+	\end{longtable}
+	\normalsize
+	
+	\section{Autoevaluación y corrección de requisitos}
+	
+	Cada requisito se revisó con las características de la cláusula 5.2.5 y el lenguaje de la cláusula 5.2.7 de la norma \cite{iso29148}. La versión corregida es la que aparece en la tabla de clasificación.
+	
+	\small
+	\begin{longtable}{p{0.08\linewidth}p{0.35\linewidth}p{0.43\linewidth}p{0.09\linewidth}}
+		\toprule
+		\textbf{ID} & \textbf{Versión inicial} & \textbf{Versión corregida} & \textbf{Revisión}\\
+		\midrule
+		\endhead
+		F-01 & El usuario podrá buscar y comprar fácilmente. & La aplicación deberá permitir introducir un texto en el campo de búsqueda e iniciar la consulta. & Singular\\
+		F-02 & Debe encontrar lo que escriba. & La aplicación deberá mostrar una lista relacionada con el texto enviado o un estado explícito sin resultados. & Observable\\
+		F-03 & La ficha debe aparecer bien. & La aplicación deberá abrir la ficha del producto seleccionado desde el catálogo o los resultados. & Preciso\\
+		F-04 & El precio debe ser correcto. & La aplicación deberá presentar el precio y la información principal de la oferta seleccionada. & Verificable\\
+		F-05 & La cuenta debe funcionar siempre. & La aplicación deberá abrir la sección de cuenta al seleccionar la opción correspondiente. & Delimitado\\
+		I-01 & Los controles deben verse bien. & La aplicación deberá mostrar los controles evaluados sin superposición ni recorte en el dispositivo declarado. & Observable\\
+		I-02 & La pantalla debe adaptarse perfectamente. & La aplicación deberá adaptar la presentación al área lógica del dispositivo sin ocultar los controles evaluados. & No ambiguo\\
+		P-01 & La búsqueda debe ser instantánea. & La aplicación deberá mostrar los resultados en un máximo de 3 segundos en 19 de 20 ejecuciones. & Cuantificado\\
+		P-02 & Los productos deben abrir rápido. & La aplicación deberá abrir la ficha en un máximo de 3 segundos en 19 de 20 ejecuciones. & Cuantificado\\
+		Q-01 & La aplicación debe estar disponible casi siempre. & La búsqueda deberá estar disponible en al menos el 99\% de las comprobaciones de 24 horas. & Umbral\\
+		Q-02 & La compra debe ser totalmente segura. & La aplicación deberá conservar la integridad de los datos de la operación en el 100\% de los casos de prueba. & Verificable\\
+		Q-03 & Buscar debe ser sencillo. & Al menos 9 de 10 participantes deberán completar una búsqueda sin ayuda. & Medible\\
+		Q-04 & Los precios no deben equivocarse. & El precio de la ficha y del resumen de compra deberá coincidir en el 100\% de los casos válidos. & Medible\\
+		Q-05 & No debe pedir permisos innecesarios. & La aplicación deberá usar únicamente permisos necesarios para las funciones activadas. & Delimitado\\
+		C-01 & Debe funcionar en cualquier Android. & La aplicación deberá operar en la versión de Android del dispositivo de prueba, si es oficialmente compatible. & Delimitado\\
+		\bottomrule
+	\end{longtable}
+	\normalsize
+	
+	\section{Reflexión}
+	
+	Formular requisitos de calidad resultó más difícil que describir funciones visibles, porque no basta con decir que una aplicación debe ser rápida, segura o fácil de usar: hay que definir una característica, una métrica y un umbral. En Eneba, una búsqueda o la apertura de una ficha se observan directamente; en cambio, la integridad, la confidencialidad o la disponibilidad requieren pruebas controladas que no se pueden comprobar con una captura.
+	
+	Revisar los enunciados con ISO/IEC/IEEE 29148:2018 mostró que cada requisito debe ser claro, singular y verificable, y que además el conjunto debe revisarse para evitar repeticiones o contradicciones. Redactar requisitos no es listar funciones, sino expresar necesidades con precisión suficiente para poder evaluarlas.
+	
+	\bibliographystyle{IEEEtran}
+	\bibliography{referencias}
+	
+\end{document}
