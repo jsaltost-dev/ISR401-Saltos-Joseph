@@ -24,3 +24,7 @@ pdflatex main.tex
 El segundo comando actualiza referencias y el PDF final se genera como `main.pdf`.
 
 Las imágenes del anexo deben permanecer en la carpeta `evidencias/` con los nombres indicados.
+
+## Nota sobre las evidencias
+
+Las fotografías originales se conservan como respaldo de la transcripción y se incorporan al PDF en el apartado de anexos.
